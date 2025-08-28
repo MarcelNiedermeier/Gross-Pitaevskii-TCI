@@ -1,4 +1,4 @@
-Code to solve the Gross-Pitaevskii equation in one and two dimensions via a mixed-spectral second-order Trotterisation algorithm, based on matrix product states and tensor cross interpolation. 
+Code to solve the Gross-Pitaevskii equation in one and two dimensions via a mixed-spectral second-order Trotterisation algorithm, based on matrix product states and tensor cross interpolation. Results obtained with this code are described in the paper `https://arxiv.org/abs/2507.04262`, please cite this work if you use the code in this repository.
 
 There are two identical directories in the working_example folder for one and two dimensions. In the following, I will describe the structure of the 1D folder; the 2D folder works in the same fashion.
 
@@ -29,4 +29,15 @@ The Julia version is Julia 1.11.1.
 
 General (helper) functions are contained in the `utilities.jl` file. 
 
-A given simulation of the Gross-Pitaevskii equation can then be executed by running the `GP_1D.jl` file.
+A given simulation of the Gross-Pitaevskii equation can then be executed by running the `GP_1D.jl` file. In this file, one needs to define:
+- an initial state, via a suitable function (e.g. a Gaussian)
+- a potential in which this state evolves (e.g. a harmonic trap)
+- the parameters which describe the potential, the initial state, and further aspects of the computation (e.g. spatial resolution R, box width, etc.)
+- a name `specific_run` for a directory corresponding to the given evolution.
+
+Upon executing this file as `julia GP_1D.jl`, a new directory `specific_run` is created in the `Runs` directory. It contains the MPS wave functions corresponding to (by default) every 10th time step, as well as subdirectories to save further processed data and plots.
+
+Next, one calculates observables and heatmaps of the probability density by running the `observables_1D.jl` file. Here, one again needs to specify the name `specific_run` of the run one wants to operate on. The file will load the MPS data and calculate the spread of the probability density, expectation values, and other things, as desired. The outputs are saved as .txt files in the `Data_reconstructed` directory of the run `specific_run`. 
+
+Finally, one can use the jupyter notebook `plotting_evolution_1D.ipynb` for plotting the results. Here, one again has to specify the name `specific_run` of the directory one wishes to plot from. 
+

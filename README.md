@@ -4,7 +4,7 @@ There are two identical directories in the working_example folder for one and tw
 
 The packages with which this code has been tested and executed are the following:
 
-'''
+```
 Pkg.add([
     PackageSpec(name="BenchmarkTools", version="1.6.0"),
     PackageSpec(name="DelimitedFiles", version="1.9.1"),
@@ -23,10 +23,10 @@ Pkg.add([
     PackageSpec(name="LinearAlgebra", version="1.11.0"),
 ])
 
-'''
+```
 The Julia version is Julia 1.11.1.
 
 
-General (helper) functions are contained in the 'utilities.jl' file. 
+General (helper) functions are contained in the `utilities.jl` file. 
 
-A given simulation of the Gross-Pitaevskii equation can then be executed by running the 'GP_1D.jl' file.
+A given simulation of the Gross-Pitaevskii equation can then be executed by running the `GP_1D.jl` file.
